@@ -59,7 +59,7 @@ def compile_toxic(out: str = typer.Argument("model.json"), standalone: bool = ty
 @app.command()
 def compile_all(path: str, out: str = typer.Argument("model.json")):
     toxic = compile_toxic(standalone=False)
-    discord = compile_discord(path="/home/magnus/Downloads/discord", standalone=False)
+    discord = compile_discord(path=path, standalone=False)
     final = markovify.combine([toxic, discord], [1, 3])
     final.compile(inplace=True)
     with open(out, "w+") as f:
